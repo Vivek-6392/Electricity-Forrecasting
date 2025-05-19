@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EnergyForecaster</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+      </svg>
+      EnergyForecaster
+    </div>
+    <nav>
+      <a href="http://127.0.0.1:5500/home.html">Home</a>
+      
+      <a href="#" class="active">Household Prediction</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Household Information</h2>
+
+      <div class="row">
+        <div class="form-group">
+          <label for="city">City</label>
+          <select id="city" name="city">
+            <option value="Mumbai">Mumbai</option>
+            <option value="New Delhi">New Delhi</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Vadodara">Vadodara</option>
+            <option value="Shimla">Shimla</option>
+            <option value="Ratnagiri">Ratnagiri</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="company">Power Company</label>
+          <select id="company" name="company">
+            <option value="Tata Power Company Ltd.">Tata Power Company Ltd.</option>
+            <option value="Adani Power Ltd.">Adani Power Ltd.</option>
+            <option value="Power Grid Corp">Power Grid Corp</option>
+            <option value="NHPC">NHPC</option>
+            <option value="Jyoti Structure">Jyoti Structure</option>
+            <option value="Kalpataru Power">Kalpataru Power</option>
+            <option value="Ratnagiri Gas and Power Pvt. Ltd. (RGPPL)">RGPPL</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="Monthly_hours">Monthly Average(hours)</label>
+        <input type="number" id="hoursSlider" name="hoursSlider" value="12" min="1" max="24" step="1">
+      </div>
+
+      <h2>Appliances & Devices</h2>
+
+      <div class="devices-grid">
+        <div>
+          <label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+              <path d="M9 18h6"></path>
+              <path d="M10 22h4"></path>
+            </svg>
+            Fans
+          </label>
+          <input type="number" class="device-input" id="fans" name="fans" value="12" min="0">
+        </div>
+
+        <div>
+          <label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+              <line x1="2" x2="22" y1="10" y2="10"></line>
+            </svg>
+            Air Conditioners
+          </label>
+          <input type="number" class="device-input" id="ac" name="ac" value="2" min="0">
+        </div>
+
+        <div>
+          <label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="11" x="3" y="7" rx="2"></rect>
+              <path d="M7 7V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v4"></path>
+              <line x1="9" x2="15" y1="14" y2="14"></line>
+            </svg>
+            Televisions
+          </label>
+          <input type="number" class="device-input" id="tv" name="tv" value="1" min="0">
+        </div>
+
+        <div>
+          <label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+              <line x1="3" x2="21" y1="9" y2="9"></line>
+              <line x1="3" x2="21" y1="15" y2="15"></line>
+              <line x1="9" x2="9" y1="3" y2="21"></line>
+              <line x1="15" x2="15" y1="3" y2="21"></line>
+            </svg>
+            Refrigerators
+          </label>
+          <input type="number" class="device-input" id="refrigerator" name="refrigerator" value="1" min="0">
+        </div>
+
+        <div>
+          <label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="8" x="5" y="2" rx="2"></rect>
+              <rect width="20" height="8" x="2" y="14" rx="2"></rect>
+              <line x1="6" x2="18" y1="6" y2="6"></line>
+              <line x1="12" x2="12" y1="14" y2="22"></line>
+            </svg>
+            Monitors/Computers
+          </label>
+          <input type="number" class="device-input" id="monitor" name="monitor" value="1" min="0">
+        </div>
+
+        <div>
+          <label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 18.8A2.8 2.8 0 0 0 4.8 16H8v-4l12-9v16l-12-9v4h8"></path>
+            </svg>
+            Motor Pump
+          </label>
+          <input type="number" class="device-input" id="pump" name="pump" value="0" min="0">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="month">Month</label>
+        <select id="month" name="month">
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="tariff">Tariff Rate (₹/kWh)</label>
+        <input type="number" id="tariff" name="tariff" value="8.5" step="0.1" min="0">
+      </div>
+
+      <button class="btn" id="predictBtn">Predict Energy Consumption</button>
+
+      <div class="loading" id="loadingIndicator">
+        <div class="spinner"></div>
+        <p>Calculating prediction...</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Prediction Results</h2>
+
+      <div class="result-box">
+        <div>
+          <div>Monthly Bill</div>
+          <div class="result-value" id="billResult">₹0.00</div>
+        </div>
+        <svg class="result-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+        </svg>
+      </div>
+
+      <div class="result-box">
+        <div>
+          <div>Monthly Consumption</div>
+          <div class="result-value" id="kwh-result">0 kWh</div>
+        </div>
+        <svg class="result-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+        </svg>
+      </div>
+
+      <div class="info-text" id="modelInfo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" x2="12" y1="16" y2="12"></line>
+          <line x1="12" x2="12.01" y1="8" y2="8"></line>
+        </svg>
+        Prediction based on default energy model
+      </div>
+
+      <div class="breakdown">
+        <h3>Consumption Breakdown</h3>
+        <div id="breakdownList">
+          <!-- Will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <div class="recommendations">
+        <h3>Recommendations</h3>
+        <div id="recommendationsList">
+          <!-- Will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
